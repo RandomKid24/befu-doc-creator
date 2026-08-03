@@ -16,6 +16,12 @@ const IMAGE_FILTERS = [
 
 let mainWindow;
 
+// Packaged builds get their icon from build/icon.icns|ico|icons (see the
+// "build" key in package.json) baked into the app bundle/exe by
+// electron-builder. This path is only for `npm start` (unpackaged dev mode),
+// where Windows/Linux would otherwise show the generic Electron icon.
+const ICON_PATH = path.join(__dirname, '..', '..', 'build', 'icon.png');
+
 function send(channel, payload) {
   if (mainWindow && !mainWindow.isDestroyed()) mainWindow.webContents.send(channel, payload);
 }
@@ -28,6 +34,7 @@ function createWindow() {
     minHeight: 640,
     title: 'Beforth Doc Studio',
     backgroundColor: '#0B0E14',
+    icon: ICON_PATH,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
@@ -181,7 +188,15 @@ ipcMain.handle('export:pdf', async (evt, { defaultName }) => {
   return { canceled: false, filePath: res.filePath };
 });
 
-app.whenReady().then(createWindow);
+app.whenReady().then(() => {
+  // macOS Dock icon isn't picked up from BrowserWindow's `icon` option like
+  // Windows/Linux — it needs setting explicitly (packaged builds get the
+  // real Dock icon from build/icon.icns instead, this is dev-mode only).
+  if (process.platform === 'darwin' && app.dock) {
+    app.dock.setIcon(ICON_PATH);
+  }
+  createWindow();
+});
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') app.quit();

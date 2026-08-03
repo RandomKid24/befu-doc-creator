@@ -37,14 +37,17 @@
     },
     "mac": {
       "category": "public.app-category.productivity",
+      "icon": "build/icon.icns",
       "target": ["dmg", "zip"]
     },
     "win": {
+      "icon": "build/icon.ico",
       "target": ["nsis", "portable"]
     },
     "linux": {
-      "target": ["AppImage", "deb"],
-      "category": "Office"
+      "icon": "build/icons",
+      "category": "Office",
+      "target": ["AppImage", "deb"]
     },
     "publish": {
       "provider": "github"
