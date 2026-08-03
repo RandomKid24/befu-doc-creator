@@ -1,6 +1,6 @@
 {
   "name": "beforth-doc-studio",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Beforth Doc Studio — a desktop app for writing branded documents and exporting them to PDF and DOCX.",
   "main": "src/main/main.js",
   "author": {
@@ -50,7 +50,8 @@
       "target": ["AppImage", "deb"]
     },
     "publish": {
-      "provider": "github"
+      "provider": "github",
+      "draft": false
     }
   }
 }
