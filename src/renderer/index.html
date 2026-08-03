@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Beforth Doc Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+
+  <div id="topbar">
+    <div class="brand">BEFORTH <span>DOC STUDIO</span></div>
+    <span id="fileLabel" class="filelabel">Untitled</span>
+    <button class="btn" id="btnNew">New</button>
+    <button class="btn" id="btnOpen">Open…</button>
+    <button class="btn" id="btnSave">Save</button>
+    <button class="btn" id="btnSaveAs">Save As…</button>
+    <div class="spacer"></div>
+    <span id="pageCount" class="pagecount">1 page</span>
+    <span id="status"></span>
+    <button class="btn" id="btnInsertImage">Insert Image…</button>
+    <button class="btn" id="btnInsertDiagram">Insert Diagram</button>
+    <button class="btn" id="btnDownloadHtml">Export HTML</button>
+    <button class="btn" id="btnExportDocx">Export DOCX</button>
+    <button class="btn primary" id="btnExportPdf">Export PDF</button>
+  </div>
+
+  <div id="body">
+    <div id="editorPane">
+      <div id="editorTabs">
+        <div class="etab active" data-tab="meta">Document Info</div>
+        <div class="etab" data-tab="src">Content</div>
+        <div class="etab" data-tab="help">Syntax Guide</div>
+      </div>
+
+      <div id="metaForm" class="show">
+        <label>Kicker (top of cover, e.g. document type)</label>
+        <input id="m_kicker" type="text" placeholder="Software Requirements Specification">
+        <label>Title (use \n for a line break)</label>
+        <textarea id="m_title" placeholder="Inventory &amp; Procurement\nManagement System"></textarea>
+        <label>Description (cover paragraph)</label>
+        <textarea id="m_description" placeholder="A requirements specification covering..."></textarea>
+        <label>Prepared For</label>
+        <input id="m_preparedFor" type="text" placeholder="Client Name">
+        <label>Prepared By</label>
+        <input id="m_preparedBy" type="text" placeholder="Beforth">
+        <label>Date</label>
+        <input id="m_date" type="text" placeholder="19–20 Jul 2026">
+        <label>Version</label>
+        <input id="m_version" type="text" placeholder="1.0 Draft">
+        <label>Brand wordmark (cover, top-left of every page)</label>
+        <input id="m_brand" type="text" placeholder="BEFORTH">
+        <label>Running header label (top-right of every page)</label>
+        <input id="m_docLabel" type="text" placeholder="SRS · Inventory &amp; Procurement · Client Name">
+        <label>Footer label (bottom-left of every page)</label>
+        <input id="m_footerLabel" type="text" placeholder="Beforth — Software Requirements Specification">
+        <label>How to read this document (optional callout on the info page)</label>
+        <textarea id="m_howToRead" placeholder="Section 4 lists every requirement with an ID..."></textarea>
+      </div>
+
+      <div id="editorWrap" class="show">
+        <textarea id="srcEditor" spellcheck="false"></textarea>
+      </div>
+
+      <div id="helpPanel"></div>
+    </div>
+
+    <div id="previewPane">
+      <div id="previewInner"></div>
+    </div>
+  </div>
+
+</div>
+<div id="toastHost"></div>
+
+<script src="app.js"></script>
+</body>
+</html>

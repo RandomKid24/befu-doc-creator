@@ -1,0 +1,50 @@
+{
+  "name": "beforth-doc-studio",
+  "version": "1.0.0",
+  "description": "Beforth Doc Studio — a desktop app for writing branded documents and exporting them to PDF and DOCX.",
+  "main": "src/main/main.js",
+  "author": "Beforth",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder",
+    "dist:mac": "electron-builder --mac",
+    "dist:linux": "electron-builder --linux",
+    "dist:win": "electron-builder --win"
+  },
+  "devDependencies": {
+    "electron": "^43.2.0",
+    "electron-builder": "^25.1.8"
+  },
+  "dependencies": {
+    "docx": "^9.1.0",
+    "mermaid": "^11.4.1"
+  },
+  "build": {
+    "appId": "com.beforth.docstudio",
+    "productName": "Beforth Doc Studio",
+    "files": [
+      "src/**/*",
+      "node_modules/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "mac": {
+      "category": "public.app-category.productivity",
+      "target": ["dmg", "zip"]
+    },
+    "win": {
+      "target": ["nsis", "portable"]
+    },
+    "linux": {
+      "target": ["AppImage", "deb"],
+      "category": "Office"
+    },
+    "publish": {
+      "provider": "github"
+    }
+  }
+}
