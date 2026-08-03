@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "Beforth Doc Studio — a desktop app for writing branded documents and exporting them to PDF and DOCX.",
   "main": "src/main/main.js",
-  "author": "Beforth",
+  "author": {
+    "name": "Beforth",
+    "email": "badgujaraditya6060@gmail.com"
+  },
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
