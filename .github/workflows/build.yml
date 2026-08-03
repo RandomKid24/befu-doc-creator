@@ -97,6 +97,9 @@ jobs:
           # internal use, but add real signing before shipping to end users.
           CSC_IDENTITY_AUTO_DISCOVERY: false
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # Force bash even on the Windows runner (default there is PowerShell,
+        # which doesn't support the `\` line continuation used below).
+        shell: bash
         run: |
           npx electron-builder --${{ matrix.platform }} \
             --publish ${{ startsWith(github.ref, 'refs/tags/v') && 'always' || 'never' }}
